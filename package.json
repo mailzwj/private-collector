@@ -1,0 +1,17 @@
+{
+  "name": "privitecollector",
+  "version": "1.0.0",
+  "description": "您的私人收藏夹",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mr.Zheng",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^2.0.3"
+  },
+  "dependencies": {
+    "uuid": "^3.3.2"
+  }
+}
