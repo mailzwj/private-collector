@@ -25,7 +25,7 @@ const page = {
                         <p class="fav-item-title">${l.title}</p>
                         <p class="fav-item-link">${l.url}</p>
                     </div>
-                    <span class="J_RemoveItem fav-item-remove">X</span>
+                    <span class="J_RemoveItem fav-item-remove" title="移除收藏"></span>
                 </div>
             `;
         });
@@ -34,7 +34,7 @@ const page = {
         } else {
             pw.classList.add('empty');
         }
-        listDom.push('<div class="J_AddFav">添加收藏</div>');
+        listDom.push('<div class="J_AddFav add-fav"><span class="symbol-add"></span><p class="label">添加收藏</p></div>');
         pw.innerHTML = listDom.join('');
     }
 };
