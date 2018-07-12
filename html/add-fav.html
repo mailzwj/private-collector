@@ -6,14 +6,19 @@
     <link rel="stylesheet" href="../render/css/add-fav.css">
 </head>
 <body>
-    <div class="add-row">
-        <input id="J_FavTitle" type="text" placeholder="请填写名称" />
-    </div>
-    <div class="add-row">
-        <input id="J_FavLink" type="text" placeholder="请填写收藏的链接" />
+    <div class="add-wrap">
+        <div class="add-row page-title">
+            填写收藏信息
+        </div>
+        <div class="add-row">
+            <input id="J_FavTitle" class="inp" type="text" placeholder="名称" />
+        </div>
+        <div class="add-row">
+            <input id="J_FavLink" class="inp" type="text" placeholder="收藏的链接" />
+        </div>
     </div>
     <div class="act-wrap">
-        <input type="button" value="取消" id="J_AddCancel" class="btn add-cancel" />
+        <input type="button" value="取消" id="J_AddCancel" class="btn btn-cancel" />
         <input type="button" value="确定" id="J_AddOk" class="btn btn-ok" />
     </div>
     <script src="../render/js/add-fav.js"></script>

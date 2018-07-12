@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, globalShortcut } = require('electron');
 const path = require('path');
 const url = require('url');
 
@@ -24,6 +24,7 @@ const createWindow = () => {
 
     win.on('close', () => {
         win = null;
+        globalShortcut.unregisterAll();
     });
 
     win.webContents.on('did-finish-load', () => {

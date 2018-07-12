@@ -1,4 +1,4 @@
-const { ipcMain, BrowserWindow } = require('electron');
+const { ipcMain, BrowserWindow, globalShortcut } = require('electron');
 const uuid = require('uuid/v4');
 const url = require('url');
 const path = require('path');
@@ -11,10 +11,10 @@ module.exports = (win) => {
 
     let cldWin;
 
-    ipcMain.on('show-add-dlg', (event) => {
+    const createSubWindow = () => {
         cldWin = new BrowserWindow({
             width: 400,
-            height: 200,
+            height: 220,
             parent: win,
             modal: true,
             resizable: false,
@@ -36,13 +36,28 @@ module.exports = (win) => {
         cldWin.on('close', () => {
             cldWin = null;
         });
-    });
+    };
 
-    ipcMain.on('close-add-dlg', () => {
+    const closeSubWindow = () => {
         if (cldWin) {
             cldWin.close();
+            cldWin = null;
+        }
+    };
+
+    ipcMain.on('show-add-dlg', createSubWindow);
+
+    globalShortcut.register('CmdOrCtrl+D', () => {
+        if (cldWin) {
+            cldWin.show();
+        } else {
+            createSubWindow();
         }
     });
+
+    globalShortcut.register('Esc', closeSubWindow);
+
+    ipcMain.on('close-add-dlg', closeSubWindow);
 
     ipcMain.on('save-fav-link', (ev, data) => {
         // console.log(data);
@@ -54,6 +69,6 @@ module.exports = (win) => {
         sourceData.records.unshift(record);
         fs.writeFileSync(dataPath, JSON.stringify(sourceData), 'utf-8');
         win.webContents.send('fav-list', sourceData);
-        cldWin.close();
+        closeSubWindow();
     });
 };
