@@ -21,7 +21,7 @@ electron-packager . PrivateCollector --overwrite
 
 * 打包app并加密压缩文件
 ```bash
-electron-packager . PrivateCollector --asar --overwrite
+electron-packager . PrivateCollector --asar.unpackDir=data --overwrite
 ```
 
 * 生成dmg安装包
